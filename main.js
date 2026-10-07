@@ -20,111 +20,12 @@ controls.target.set(0, 1, 0);
 
 // ---------- Helper Functions ----------
 
-function box(w, h, d, color, x, y, z) {
-    const mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(w, h, d),
-        new THREE.MeshStandardMaterial({ color: color })
-    );
-    mesh.position.set(x, y, z);
-    mesh.castShadow = true;
-    mesh.receiveShadow = true;
-    scene.add(mesh);
-    return mesh;
-}
-
-function cylinder(radius, height, color, x, y, z) {
-    const mesh = new THREE.Mesh(
-        new THREE.CylinderGeometry(radius, radius, height, 16),
-        new THREE.MeshStandardMaterial({ color: color })
-    );
-    mesh.position.set(x, y, z);
-    mesh.castShadow = true;
-    scene.add(mesh);
-    return mesh;
-}
-
-// ---------- Room ----------
-
-box(6.2, 0.2, 5, 0xe2d4c9, .4, -0.1, 0);
-box(0.2, 4, 5, 0x90a4ae, -2.6, 2, 0);
-box(6.2, 4, 0.2, 0xb0bec5, .4, 2, -2.6);
-
-// ---------- Rug ----------
-
-const rug = new THREE.Mesh(
-    new THREE.PlaneGeometry(4, 4),
-    new THREE.MeshStandardMaterial({ color: 0xffffff })
-);
-rug.rotation.x = -Math.PI / 2;
-rug.position.set(-0.2, 0.01, 0.2);
-scene.add(rug);
-
-// ---------- Bed ----------
-
-box(2.2, 0.4, 3, 0x5d4037, -0.6, 0.2, -.8);
-box(2.2, 1.2, 0.2, 0x5d4037, -0.6, 0.6, -2.4);
-box(2.1, 0.4, 2.7, 0xffffff, -0.6, 0.5, -1);
-box(2.12, 0.42, 1.8, 0x4f5d75, -0.6, 0.52, -0.9);
-
-box(0.8, 0.15, 0.5, 0xffffff, -1.05, 0.75, -2);
-box(0.8, 0.15, 0.5, 0xffffff, -0.15, 0.75, -2);
-
-// ---------- Bedside Table ----------
-
-box(0.7, 0.65, 0.7, 0x5d4037, -2.15, 0.325, -2.2);
-
-// Lamp
-cylinder(0.1, 0.15, 0xffb74d, -2.15, 0.75, -2.2);
-cylinder(0.025, 0.25, 0xffb74d, -2.15, 0.95, -2.2);
-
-const lampShade = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.16, 0.24, 0.3, 16),
+const box1 = new THREE.Mesh(
+    new THREE.BoxGeometry(0.1, 1, 1),
     new THREE.MeshStandardMaterial({ color: 0xfff3e0 })
 );
-lampShade.position.set(-2.15, 1.15, -2.2);
+box.position.set(-4, 2, 1);
 scene.add(lampShade);
-
-const lampLight = new THREE.PointLight(0xffaa44, 1.5, 5);
-lampLight.position.set(-2.15, 1, -2.2);
-scene.add(lampLight);
-
-// ---------- Window ----------
-
-// Glass
-box(1.8, 1.4, 0.05, 0x9ed8e8, 2, 2.4, -2.48);
-
-// Window frame
-box(2, 0.1, 0.1, 0x5d4037, 2, 3.1, -2.52);
-box(2, 0.1, 0.1, 0x5d4037, 2, 1.7, -2.52);
-box(0.1, 1.5, 0.1, 0x5d4037, 1, 2.4, -2.52);
-box(0.1, 1.5, 0.1, 0x5d4037, 3, 2.4, -2.52);
-
-
-// ---------- Study Table ----------
-
-box(1.8, 0.15, 0.8, 0x795548, 2, 1.25, -2.25);
-
-// Legs
-box(0.12, 1.2, 0.12, 0x795548, 1.4, 0.6, -2.4);
-box(0.12, 1.2, 0.12, 0x795548, 2.4, 0.6, -2.4);
-box(0.12, 1.2, 0.12, 0x795548, 1.4, 0.6, -2);
-box(0.12, 1.2, 0.12, 0x795548, 2.4, 0.6, -2);
-
-// ---------- Books ----------
-
-box(0.55, 0.08, 0.35, 0x455a64, 1.5, 1.38, -2.25);
-box(0.5, 0.08, 0.32, 0x6a5acd, 1.5, 1.46, -2.25);
-box(0.45, 0.08, 0.3, 0x8d6e63, 1.5, 1.54, -2.25);
-
-// ---------- Chair ----------
-
-box(0.8, 0.12, 0.8, 0x37474f, 1.9, 0.65, -1.50);
-box(0.8, 1, 0.12, 0x37474f, 1.9, 1.05, -1.1);
-
-box(0.1, 0.65, 0.1, 0x37474f, 1.6, 0.3, -1.80);
-box(0.1, 0.65, 0.1, 0x37474f, 2.2, 0.3, -1.80);
-box(0.1, 0.65, 0.1, 0x37474f, 1.6, 0.3, -1.05);
-box(0.1, 0.65, 0.1, 0x37474f, 2.2, 0.3, -1.05);
 
 // ---------- Lighting ----------
 
